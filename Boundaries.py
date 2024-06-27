@@ -34,9 +34,11 @@ class Dirichlet(Boundary):
          self.B = B_
 
 class Neumann(Boundary):
+    def __init__(self,kb):
+        self.kb = kb
 
-    def __call__(self, r, kb):
-        self.m = kb
+    def __call__(self, r):
+        self.m = self.kb
         B_int = np.ones((r,self.m))
         
         def rec(j):

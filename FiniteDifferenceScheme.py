@@ -272,19 +272,21 @@ class FiniteDifferenceScheme:
         K = self._modalBase(z0, bound_r, bound_l)
  
         ''' Right Boundary '''
-        B_d = bound_r.B
+        bound_r(self.p)    # Assemble the B matrix
+        B_r = bound_r.B
         
         K_right_d = K[0:self.p+bound_r.m, self.p:]
         K_left_d  = K[0:self.p+bound_r.m, 0:self.p]
         
-        Matrix_r = np.linalg.inv(B_d.dot(K_left_d)).dot(-B_d.dot(K_right_d))
+        Matrix_r = np.linalg.inv(B_r.dot(K_left_d)).dot(-B_r.dot(K_right_d))
                             
         ''' Left Boundary '''
-        B_g = bound_l.B
+        bound_l(self.r)    # Assemble the B matrix
+        B_l = bound_l.B
         K_right_g = K[self.p+bound_r.m:, self.p:]
         K_left_g  = K[self.p+bound_r.m:, 0:self.p]
         
-        Matrix_l = np.linalg.inv(B_g.dot(K_right_g)).dot(-B_g.dot(K_left_g))
+        Matrix_l = np.linalg.inv(B_l.dot(K_right_g)).dot(-B_l.dot(K_left_g))
     
         ''' Compute the D_p^(-J) and D_r^J matrices '''
         Dp = np.zeros((self.p,self.p), dtype = 'cfloat')
@@ -307,9 +309,11 @@ class FiniteDifferenceScheme:
             print('The scheme IS semi-group stable')
         
     def matrixFiniteDifference(self,J, bound_r, bound_l):
-
-        B_r = bound_r.B    # Matrix of the right boundary condition
-        B_l = bound_l.B    # Matrix of the left boundary condition
+        bound_r(self.p)    # Assemble the B matrix
+        bound_l(self.r)    # Assemble the B matrix
+        
+        B_r = bound_r.B    
+        B_l = bound_l.B    
 
 
         M = np.zeros((J+1,J+1))
@@ -325,7 +329,7 @@ class FiniteDifferenceScheme:
                     for k in range(bound_r.m):
                         M[j,J-k]  += -B_r[self.p-c,self.p+k]*self.scheme[l,0]
                 
-                else:                       # Correspond to the left boundary condition
+                else:                         # Correspond to the left boundary condition
                     c = j+lt
                     for k in range(bound_l.m):
                         M[j,k]  += -B_l[self.r+c-1,self.r+k]*self.scheme[l,0]
