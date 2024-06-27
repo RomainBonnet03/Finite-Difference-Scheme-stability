@@ -36,10 +36,10 @@ scheme.drawRoots(1)
 
 ''' Compute the global-reflexion matrix and check if it is semi-group stable '''
 bound_r  = Neumann()
-bound_r(r=scheme.r, kb=2)
+bound_r(r=scheme.p, kb=2)
 
 bound_l  = Dirichlet()
-bound_l(r=scheme.p)
+bound_l(r=scheme.r)
 
 scheme.is_SemiGroup_stable(1, bound_r, bound_l, J = 1000)
 

@@ -20,7 +20,7 @@ file to which is attached this file.
 import numpy as np
 
 # LeBarbenchon library (cf Credit)
-from utils import coefBinomial
+from Lebarbenchon_codes.utils import coefBinomial
 
 class Boundary():
     def __init__(self):
