@@ -53,7 +53,26 @@ class Neumann(Bord):
     
     def name(self):
         return "Neumann"
+ 
+class Robin_ordre1(Bord):
+    ''' Added by Romain Bonnet-Eymard for the thesis work '''
+    ''' Robin condition of the form: b*(\partial_n u) + a*u = 0, discretized
+        at order 1 '''
+        
+    def __init__(self, a, b, dx):
+        self.a  = a
+        self.b  = b
+        self.dx = dx
+        self.d  = 0
+        
+    def __call__(self, r, **kwargs):
+        B = np.zeros((r,1))
+        for j in range(r):
+            B[j,0] = (self.b+self.a*self.dx)**(-(r-j))
+        return B, lambda t: 0
     
+    def name(self):
+        return "Robin_ordre1"    
 
 class SILW(Bord):
     def __init__(self, kd, d):
