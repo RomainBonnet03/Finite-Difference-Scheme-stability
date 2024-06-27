@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 import numpy.polynomial.polynomial as nppol
 
 # Personal Libraries #
-from utils import sort, epsilon, eta_func
-from BoundariesV2 import *
+from Lebarbenchon_codes.utils import sort, epsilon, eta_func
+from Boundaries import *
 
 class FiniteDifferenceScheme:
     
@@ -220,7 +220,7 @@ class FiniteDifferenceScheme:
      
     
     def _modalBase(self, z0, bound_r, bound_l):
-        assert(self.exists and self.NeumannStable)
+        assert(self.exists and self.isCauchyStable)
         [RootsFromInside, RootsFromOutside] = self._Kappa(z0)
         
         K = np.zeros((self.p+self.r+bound_r.m+bound_l.m, self.r+self.p), dtype='cfloat')
@@ -243,12 +243,13 @@ class FiniteDifferenceScheme:
                         mult+=1
                     j = j+mult
                     
-        for k in range(self.p+bound_r.m, self.p+self.r+bound_r.m+bound_l.m):    
+        for k in range(self.r+bound_l.m):   
+                kt = k+self.p+bound_r.m
                 j = 0
                 while j<self.p:
                     mult = 0
                     while j+mult < self.p and RootsFromOutside[j] == RootsFromOutside[j+mult]:
-                        K[k,j+mult] = (-self.r+k)**mult*RootsFromOutside[j+mult]**(-self.r+k)
+                        K[kt,j+mult] = (-self.r+k)**mult*RootsFromOutside[j+mult]**(-self.r+k)
                         mult+=1
                     j = j+mult
                 
@@ -256,7 +257,7 @@ class FiniteDifferenceScheme:
                 while j<self.r:
                     mult = 0
                     while j+mult < self.r and RootsFromInside[j] == RootsFromInside[j+mult]:
-                        K[k,self.p+j+mult] = (-self.r+k)**mult*RootsFromInside[j+mult]**(-self.r+k)
+                        K[kt,self.p+j+mult] = (-self.r+k)**mult*RootsFromInside[j+mult]**(-self.r+k)
                         mult+=1
                     j = j+mult
         return K
@@ -272,6 +273,7 @@ class FiniteDifferenceScheme:
  
         ''' Right Boundary '''
         B_d = bound_r.B
+        
         K_right_d = K[0:self.p+bound_r.m, self.p:]
         K_left_d  = K[0:self.p+bound_r.m, 0:self.p]
         
@@ -281,17 +283,17 @@ class FiniteDifferenceScheme:
         B_g = bound_l.B
         K_right_g = K[self.p+bound_r.m:, self.p:]
         K_left_g  = K[self.p+bound_r.m:, 0:self.p]
-                
+        
         Matrix_l = np.linalg.inv(B_g.dot(K_right_g)).dot(-B_g.dot(K_left_g))
     
         ''' Compute the D_p^(-J) and D_r^J matrices '''
         Dp = np.zeros((self.p,self.p), dtype = 'cfloat')
         for j in range(self.p):
-            Dp[j,j] = RootsFromOutside[j]**(-(J-1))
+            Dp[j,j] = RootsFromOutside[j]**(-(J))
         
         Dr = np.zeros((self.r,self.r), dtype = 'cfloat')
         for j in range(self.r):
-            Dr[j,j] = RootsFromInside[j]**(J-1) 
+            Dr[j,j] = RootsFromInside[j]**(J) 
     
         return Matrix_l.dot(Dp.dot(Matrix_r.dot(Dr)))
         
