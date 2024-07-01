@@ -2,7 +2,7 @@
 """
 Created on Mon Jun 24 14:28:48 2024
 
-@author: dutym
+@author: Romain Bonnet-Eymard
 """
 
 """ CREDIT:
