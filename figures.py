@@ -2,7 +2,9 @@
 """
 Created on Mon Jun 10 09:30:25 2024
 
-@author: dutym
+@author: Romain Bonnet-Eymard
+
+This script enables to draw the figures of the manuscript.
 """
 
 import numpy as np
