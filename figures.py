@@ -115,7 +115,7 @@ plt.show()
 
 ### Figure 1.7: GKS instabilities ### 
 T              = 1
-lambd          = 1
+lambd          = 0.5
 dx             = 1/(100)
 dt             = lambd*dx
 J              = int(1/dx+1)

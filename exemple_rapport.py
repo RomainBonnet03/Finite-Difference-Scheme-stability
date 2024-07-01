@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # Personal libraries
-from FiniteDifferenceSchemeV3 import *
-from BoundariesV2 import *
+from FiniteDifferenceScheme import *
+from Boundaries import *
 
 
 ''' Exemple of semi-groupe instabilities for a homogenous Neumann boundary condition of order 2 
@@ -35,11 +35,9 @@ scheme.isCauchyStable()
 scheme.drawRoots(1)
 
 ''' Compute the global-reflexion matrix and check if it is semi-group stable '''
-bound_r  = Neumann()
-bound_r(r=scheme.p, kb=2)
+bound_r  = Neumann(kb=2)
 
 bound_l  = Dirichlet()
-bound_l(r=scheme.r)
 
 scheme.is_SemiGroup_stable(1, bound_r, bound_l, J = 1000)
 
