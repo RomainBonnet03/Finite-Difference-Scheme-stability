@@ -1,5 +1,6 @@
 """
 This file defines utils function specific to the library
+Copyright (c) 2023 Pierre LeBarbenchon
 """
 
 import numpy as np
