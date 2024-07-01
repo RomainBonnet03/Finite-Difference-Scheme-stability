@@ -6,6 +6,17 @@ Created on Fri May  3 10:05:44 2024
 @author: Romain Bonnet-Eymard
 """
 
+""" CREDIT:
+This code uses the package "boundaryscheme" implemented by LeBarbenchon:
+Title:         boundaryscheme.py
+Author:        LeBarbenchon Pierre  
+Date:          2023
+Code Version:  2.3
+Availabity:    https://github.com/PLeBarbenchon/boundaryscheme
+The LICENCE allowing the use and modification of this code is provided in the
+file to which is attached this file.   
+"""
+
 # Python Libraries #
 import numpy as np
 import matplotlib.pyplot as plt
