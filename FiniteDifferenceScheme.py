@@ -3,7 +3,7 @@
 """
 Created on Fri May  3 10:05:44 2024
 
-@author: romainbonnet-eymard
+@author: Romain Bonnet-Eymard
 """
 
 # Python Libraries #
