@@ -1,5 +1,6 @@
 """
 This file defines the schemes classes
+Copyright (c) 2023 Pierre LeBarbenchon
 """
 
 import copy
