@@ -1,5 +1,6 @@
 """
 This file defines the boundaries classes
+Copyright (c) 2023 Pierre LeBarbenchon
 """
 
 import scipy as sc
