@@ -142,7 +142,7 @@ class FiniteDifferenceScheme:
         plt.show()
         
     def _pol(self, z):
-        ''' Credit: Pierre Le Barbenchon '''
+        ''' Copyright (c) 2023 Pierre LeBarbenchon'''
         ''' Compute the coefficient of the caracteristic polynomial associated to the scheme,
          at the temporal mod z '''
         
@@ -153,7 +153,7 @@ class FiniteDifferenceScheme:
         return P
     
     def _roots(self, z):
-        ''' Credit: Pierre Le Barbenchon '''
+        ''' Copyright (c) 2023 Pierre LeBarbenchon '''
         ''' Compute the roots of the caracteristic polynomial associated to the scheme,
          at the temporal mod z '''
         
@@ -162,7 +162,7 @@ class FiniteDifferenceScheme:
         return sort(Racinestotales)
 
     def _count_root(self, eta, eps, z0, kappa):
-        ''' Credit: Pierre Le Barbenchon '''
+        ''' Copyright (c) 2023 Pierre LeBarbenchon '''
         ''' Compute the number of forward mods and the number of backward mods '''
         
         assert(self.exists)
@@ -175,7 +175,7 @@ class FiniteDifferenceScheme:
     
     def _Kappa(self, z0):
         """
-        Credit: Pierre Le Barbenchon
+        Copyright (c) 2023 Pierre LeBarbenchon
         sort the roots according to either they are forward or backward
         """
         assert(self.exists)
