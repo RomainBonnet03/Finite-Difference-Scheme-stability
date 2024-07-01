@@ -2,7 +2,7 @@
 """
 Created on Wed Jun 26 09:19:41 2024
 
-@author: dutym
+@author: Romain Bonnet-Eymard
 """
 # Python libraries
 import numpy as np
