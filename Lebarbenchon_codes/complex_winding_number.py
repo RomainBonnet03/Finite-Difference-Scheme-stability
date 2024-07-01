@@ -1,5 +1,6 @@
 """
 This file implements a routine to perform the "point in polygon" inclusion test
+Copyright (c) 2023 Pierre LeBarbenchon
 """
 
 ###### Complex winding number ############
