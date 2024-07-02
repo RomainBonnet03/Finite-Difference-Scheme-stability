@@ -9,7 +9,7 @@ Addressing the question of stability on an interval, Trefethen proves that the c
 
 To learn more about the theoretical background, please refer to the manuscript.
 
-### Problematic addressed
+### Addressed problematic
 This Master Thesis exhibits examples of exponentially unstable FD schemes, consistent with the transport equation, defined on an interval with a Dirichlet boundary condition on the incoming edge (physical boundary condition) and a Neumann boundary condition on the outgoing edge (transparent boundary condition).
 
 ## Description of the project
