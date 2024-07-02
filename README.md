@@ -53,10 +53,12 @@ Let generate the corresponding scheme.
 scheme  = FiniteDifferenceScheme(xi_K, z_K, C_K)      # Initialize the objet
 scheme.schemeGenerator() 
 ```
+![](/figures/symbol.png)
 One can verify that the scheme indeed satisfied the prescribed spectral properties:
 ```
 scheme.drawRoots(z=1) 
 ```
+![](/figures/roots.png)
 Let now define the two boundary conditions: homogenous Dirichlet condition for the left edge (incoming edge) and homogenous Neumann of order $k_b=1$ condition for the right edge (outgoing edge):
 ```
 bound_r  = Neumann(kb=2)
@@ -90,7 +92,6 @@ for n in tqdm(range(1,N)):
 
 X = np.arange(0,N)
 plt.semilogy(X, U_l2, linewidth = 4)
-plt.semilogy(X[1500:-1:2000], U_l2[1500:-1:2000], '-r', linewidth = 4)
 for j in range(2*nbr_global_reflexion):
       plt.semilogy([500+j*1000, 500+j*1000], [0, np.max(U_l2)], '--k', linewidth = 2)
 plt.title('$||U^n||_{l^2}$'+'for Dirichlet/Neumann order {}'.format(2))
@@ -99,6 +100,7 @@ plt.grid()
 plt.ticklabel_format(axis = 'x', style = 'scientific')
 plt.show()
 ```
+![](/figures/l2_norm.png)
 It appears that the scheme we defined (completed with the specified boundary conditions) is semi-group unstable. We can confirm it with the computation of the reflexion matrix:
 ```
 scheme.isSemiGroupStable(z=1, bound_r, bound_l, J)
@@ -109,4 +111,4 @@ R = scheme.matrixReflexion(z=1, bound_r, bound_l, J)
 spectral_radius = np.max(np.abs(np.linalg.eigvals(R)))    # Compute the spectral radius of the reflexion matrix
 print(spectral_radius)
 ```
-which prints $\rho(R_J) \approx <1$ (cf Proposition 2.9 of the manuscript)
+which prints $\rho(R_J)\approx 5e^{-17} <1$ (cf Proposition 2.9 of the manuscript)
