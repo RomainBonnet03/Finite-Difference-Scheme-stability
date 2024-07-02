@@ -232,6 +232,8 @@ class FiniteDifferenceScheme:
     
     def _modalBase(self, z0, bound_r, bound_l):
         assert(self.exists and self.isCauchyStable)
+        bound_r(self.p)
+        bound_l(self.r)
         [RootsFromInside, RootsFromOutside] = self._Kappa(z0)
         
         K = np.zeros((self.p+self.r+bound_r.m+bound_l.m, self.r+self.p), dtype='cfloat')
