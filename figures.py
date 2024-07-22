@@ -164,9 +164,9 @@ plt.show()
 ''' Imposed spectral properties '''
 xi_K    = np.array([0, np.pi])
 F_K     = np.array([1,1])
-C_K = np.array([1,-1])
+V_K = np.array([1,-1])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 Schema.isCauchyStable()
 
@@ -291,9 +291,9 @@ plt.show()
 ''' Imposed spectral properties '''
 xi_K    = np.array([0, np.pi])
 F_K     = np.array([1,1])
-C_K = np.array([1,-1])
+V_K = np.array([1,-1])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 Schema.isCauchyStable()
 
@@ -374,9 +374,9 @@ plt.show()
 ''' Imposed spectral properties '''
 xi_K    = np.array([0, np.pi, 0.5*np.pi])
 F_K     = np.array([1,1,1])
-C_K = np.array([1,-1,2])
+V_K = np.array([1,-1,2])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 Schema.isCauchyStable()
 
@@ -458,9 +458,9 @@ plt.show()
 ''' Imposed spectral properties '''
 xi_K    = np.array([0, 0.3*np.pi, 0.8*np.pi])
 F_K     = np.array([1,1, 1])
-C_K = np.array([1,-1, 1])
+V_K = np.array([1,-1, 1])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 
 # Roots & Symbol - Figure 2.7 #
@@ -597,9 +597,9 @@ print('max eigvals(R) = ', np.max(np.abs(np.linalg.eigvals(Schema.matrixReflexio
 ''' Propriétés spectrales '''
 xi_K    = np.array([0, 0.288*np.pi, 0.82*np.pi])
 F_K     = np.array([1,1, 1])
-C_K = np.array([1,-1, 1])
+V_K = np.array([1,-1, 1])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 
 # Roots & Symbol - Figure 2.11 #
@@ -636,7 +636,7 @@ plt.title('Symbole')
 plt.show()
 
 # Simulation - Figure 2.12 #
-nbr_double_rebond = 100
+nbr_double_rebond = 500
 
 ''' Condition initiale '''
 def u_0(x):
@@ -667,7 +667,7 @@ plt.rcParams.update({'font.size': 30})
 
 plt.semilogy(Xt, U_l2, linewidth = 4)
 plt.semilogy(Xt[1500:-1:2000], U_l2[1500:-1:2000], '--r', linewidth = 4)
-plt.title('$||U^n||_{l^2}$'+'pour Dirichlet/Neumann ordre {}'.format(kb))
+plt.title('$||U^n||_{l^2}$'+'pour Dirichlet/Neumann ordre {}'.format(1))
 plt.xlabel('n')
 plt.grid()
 plt.show()
@@ -695,9 +695,9 @@ print('max eigvals(R) = ', np.max(np.abs(np.linalg.eigvals(Schema.matrixReflexio
 ##################################################
 xi_K    = np.array([0, 0.2*np.pi, np.pi, 0.7*np.pi, 0.5*np.pi])
 F_K     = np.array([1,1, 1,1,1])
-C_K = np.array([1,-1,1.3,0.1, -0.8])
+V_K = np.array([1,-1,1.3,0.1, -0.8])
 
-Schema  = FiniteDifferenceScheme(xi_K, F_K, C_K)
+Schema  = FiniteDifferenceScheme(xi_K, F_K, V_K)
 Schema.schemeGenerator()
 Schema.isCauchyStable()
 

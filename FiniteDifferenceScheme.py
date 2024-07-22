@@ -28,11 +28,11 @@ from Boundaries import *
 
 class FiniteDifferenceScheme:
     
-    def __init__(self, xi_liste, F_liste, C_liste):
+    def __init__(self, xi_liste, F_liste, V_liste):
         # The lists must be of type (N,0)-ndarray
         self.xi      = xi_liste
         self.F       = F_liste
-        self.C       = C_liste
+        self.V       = V_liste
         self.stencil = 0
         self.center  = 0
         self.r       = 0
@@ -82,8 +82,8 @@ class FiniteDifferenceScheme:
                 A[ind_cour+2,:]  = np.real(ordre_2)
                 
                 b[ind_cour, 0]   = np.real(self.F[k])
-                b[ind_cour+1, 0] = np.real(-self.F[k]*self.C[k])
-                b[ind_cour+2, 0] = np.real(self.F[k]*(self.C[k]**2+1))
+                b[ind_cour+1, 0] = np.real(-self.F[k]*self.V[k])
+                b[ind_cour+2, 0] = np.real(self.F[k]*(self.V[k]**2+1))
                 
                 ind_cour += 3
         
@@ -97,10 +97,10 @@ class FiniteDifferenceScheme:
                 
                 b[ind_cour, 0]   = np.real(self.F[k])
                 b[ind_cour+1, 0] = np.imag(self.F[k])
-                b[ind_cour+2, 0] = np.real(-self.F[k]*self.C[k])
-                b[ind_cour+3, 0] = np.imag(-self.F[k]*self.C[k])
-                b[ind_cour+4, 0] = np.real(self.F[k]*(self.C[k]**2+1))
-                b[ind_cour+5, 0] = np.imag(self.F[k]*(self.C[k]**2+1))
+                b[ind_cour+2, 0] = np.real(-self.F[k]*self.V[k])
+                b[ind_cour+3, 0] = np.imag(-self.F[k]*self.V[k])
+                b[ind_cour+4, 0] = np.real(self.F[k]*(self.V[k]**2+1))
+                b[ind_cour+5, 0] = np.imag(self.F[k]*(self.V[k]**2+1))
                 
                 ind_cour += 6
                 

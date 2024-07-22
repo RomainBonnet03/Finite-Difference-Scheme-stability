@@ -21,9 +21,9 @@ at the right boundary '''
 xi_K    = np.array([0, 0.3*np.pi, 0.8*np.pi])
 F_K     = np.array([1,1, 1])                              # All the spatial modes are
                                                           # associated to z = 1
-alpha_K = np.array([1,-1, 1])
+C_K = np.array([1,-1, 1])
 
-scheme  = FiniteDifferenceScheme(xi_K, F_K, alpha_K)      # Initialize the objet
+scheme  = FiniteDifferenceScheme(xi_K, F_K, C_K)          # Initialize the objet
 scheme.schemeGenerator()                                  # Compute the coefficients
 
 ''' Draw symbol and check if it is Cauchy-stable '''
